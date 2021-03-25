@@ -12,10 +12,53 @@
 */
 
 #include<iostream>
-#include<vector>
+#include<queue>
+
 using namespace std;
+int l, ax, ay, bx, by, sum;
+int graph[300][300];
+
+// 나이트의 이동 가능 범위
+int dx[8] = { 1, 1, 2, 2, -1, -1, -2, -2 };
+int dy[8] = { 2, -2, 1, -1, 2, -2, 1, -1 };
+
+// 최단거리니까 bfs
+void bfs(int x, int y) {
+	queue<pair<int, int>> q;
+	q.push({ x, y });
+
+	while (!q.empty()) {
+		int nx = q.front().first;
+		int ny = q.front().second;
+		q.pop();
+		if (nx == bx && ny == by) {
+			cout << graph[nx][ny] - 1 << "\n";;
+			return;
+		}
+		for (int i = 0; i < 8; i++) {
+			if ((nx + dx[i]) >= 0 && (nx + dx[i]) < l &&
+				(ny + dy[i]) >= 0 && (ny + dy[i]) < l &&
+				graph[nx + dx[i]][ny + dy[i]] == 0) {
+				q.push({ nx + dx[i], ny + dy[i] });
+				graph[nx + dx[i]][ny + dy[i]] = graph[nx][ny] + 1;
+			}
+		}
+	}
+}
 
 int main(){
-
-
+	int t;
+	cin >> t;
+	while (t--) {
+		for (int i = 0; i < 300; i++) {
+			for (int j = 0; j < 300; j++) {
+				graph[i][j] = 0;
+			}
+		}
+		cin >> l;
+		cin >> ax >> ay;
+		cin >> bx >> by;
+		graph[ax][ay] = 1;
+		bfs(ax, ay);
+	}
 }
