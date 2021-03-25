@@ -62,5 +62,5 @@ int main() {
 			}
 		}
 	}
-	cout << scoreo << " " << scorey << "\n";
+	cout << scoreo << " " << scorey << "\n"; 
 }
