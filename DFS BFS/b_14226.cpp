@@ -22,3 +22,5 @@ https://www.acmicpc.net/problem/14226
 그전에 클립보드에 있던것 붙여넣기 = x+c, 1초
 한개삭제=x-1
 */
+
+
