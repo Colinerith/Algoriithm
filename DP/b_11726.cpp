@@ -1,0 +1,39 @@
+/*
+2×n 크기의 직사각형을 1×2, 2×1 타일로 채우는 방법의 수를 구하는 프로그램.
+
+입력
+첫째 줄에 n이 주어진다. (1 ≤ n ≤ 1,000)
+
+출력
+첫째 줄에 2×n 크기의 직사각형을 채우는 방법의 수를 10,007로 나눈 나머지를 출력한다.
+*/
+
+#include<iostream>
+using namespace std;
+
+int n;
+int d[1001];
+
+int go(int n) {
+	if (n == 1) {
+		return 1;
+	}
+	if (d[n] != 0) {
+		return d[n];
+	}
+	d[n] = (go(n - 1)%10007 + go(n - 2)%10007)%10007;
+
+	return d[n];
+}
+
+int main() {
+	cin >> n;
+
+	d[1] = 1;
+	d[2] = 2;
+	//for (int i = 3; i <= n; i++) {
+	//	d[i] = d[i - 1] + 1;
+	//	
+	//}
+	cout << go(n);
+}
