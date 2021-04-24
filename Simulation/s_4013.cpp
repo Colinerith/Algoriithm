@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
 				}
 				else if (magnets[2][right2] == magnets[3][left3]) { //앞 세개만 돌아가고 끝남
 					if (clockwise == 1) {
-						top0 = (top0 - 1) % 8;
+						top0 = (top0 + 7) % 8;
 						top1 = (top1 + 1) % 8;
 						top2 = (top2 + 7) % 8;
 					}
