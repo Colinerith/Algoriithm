@@ -14,7 +14,6 @@ int main(int argc, char** argv) {
 				cin >> magnets[i][j];
 			}
 		}
-
 		int sum = 0;
 		int top0 = 0;
 		int top1 = 0;
