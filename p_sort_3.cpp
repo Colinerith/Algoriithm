@@ -11,4 +11,5 @@ int solution(vector<int> citations) {
         if(citations[i] == s-i) return citations[i];
         else if(citations[i] < s-i) return s-i - 1;
     }
+    return citations.size();
 }
