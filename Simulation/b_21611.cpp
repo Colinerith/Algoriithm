@@ -1,4 +1,4 @@
-// 미로_오후 2번
+// 바이러스 미로_오후 2번
 #include<iostream>
 #include<vector>
 using namespace std;
