@@ -12,16 +12,14 @@ int main() {
 	vector<int> balls;
 
 	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
+		for (int j = 0; j < n; j++)
 			cin >> map[i][j];
-		}
 	}
 
 	int result = 0;
 	int maxSize = n * n - 1; // balls 에 들어갈 공 최대 개수
 
 	pair<int, int> cur = { n / 2,  n / 2 };
-	//int curWidth = 1;
 	int minR = n / 2 - 1; int maxR = n / 2 + 1;
 	int minC = n / 2 - 1; int maxC = n / 2 + 1;
 	bool flag = true;
@@ -64,7 +62,6 @@ int main() {
 		}
 		minR--; maxR++; minC--; maxC++;
 	}
-
 	
 	// 구슬 파괴 & 이동
 	int d, s;
@@ -88,7 +85,8 @@ int main() {
 		}
 		while (cnt--) {
 			//result += balls[idx - 1];
-			balls.erase(balls.begin() + idx - 1);
+			if(idx -1 < balls.size())
+				balls.erase(balls.begin() + idx - 1);
 			idx -= toSum;
 			toSum -= 8;
 		}
@@ -103,14 +101,15 @@ int main() {
 			while (true) {
 				// 마지막 원소
 				if (cur == bSize - 1) {
-					if(cnt >= 4)
+					if (balls[prev] == balls[cur] && cnt >= 3)
 						toDel.push_back({ prev, cur + 1 });
+					else if(cnt >= 4)
+						toDel.push_back({ prev, cur });
 					break;
 				}
 
-				if (balls[prev] == balls[cur]) {
+				if (balls[prev] == balls[cur])
 					cnt++;
-				}
 				else {
 					if (cnt >= 4) {
 						// prev부터 이전까지 삭제
